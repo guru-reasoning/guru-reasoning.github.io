@@ -109,31 +109,24 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/XXXX.XXXXX-TODO"
+                <a href="https://arxiv.org/abs/2506.14965"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv-TODO</span>
+                  <span>ArXiv</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="#GURU-video-link-TODO"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-youtube"></i></span>
-                  <span>Video-TODO</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#GURU-code-github-TODO"
+                <a href="https://github.com/LLM360/Reasoning360"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code-TODO</span>
+                  <span>GitHub</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="#GURU-data-link-TODO"
+                <a href="https://huggingface.co/datasets/LLM360/guru-RL-92k"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="far fa-images"></i></span>
-                  <span>Data-TODO</span>
+                  <span>Hugging Face</span>
                 </a>
               </span>
             </div>
@@ -147,7 +140,14 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body has-text-centered">
-      <img src="./static/images/Main Img.PNG" alt="Main Img.PNG" style="max-width: 100%; height: auto; margin-bottom: 1rem;">
+      <div class="columns is-centered" style="margin-bottom: 1rem;">
+        <div class="column is-half">
+          <img src="./static/images/fig1a.svg" alt="Figure 1a" style="width: 100%; height: auto;">
+        </div>
+        <div class="column is-half">
+          <img src="./static/images/fig1b_v3.svg" alt="Figure 1b" style="width: 100%; height: auto;">
+        </div>
+      </div>
       <h2 class="subtitle has-text-centered">
         GURU presents a systematic investigation into cross-domain RL generalization, introducing a meticulously curated 92K RL-for-reasoning dataset and models demonstrating significantly improved performance.
       </h2>
@@ -162,8 +162,11 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Achieving general reasoning in large language models (LLMs) through reinforcement learning (RL) is a significant goal, yet progress is often constrained by a limited understanding of how reasoning skills transfer across diverse domains. This paper presents a systematic investigation into cross-domain RL generalization, revealing crucial dynamics for developing broadly capable models. Our analysis shows that while domains like Math, Code, and Science, heavily represented in pretraining, gain substantially from cross-domain RL training, other areas such as Logic and Tabular primarily improve with in-domain data, highlighting domain-specific learning needs. Furthermore, we find that training on a simple mixed-domain corpus effectively enhances overall reasoning capabilities, often matching or surpassing single-domain focused training. To facilitate these investigations and foster future research, we introduce GURU, a meticulously curated 92K RL-for-reasoning dataset spanning six domains: Math, Code, Science, Logic, Simulation, and Tabular, each with corresponding verifiers. The careful construction of GURU, involving rigorous sourcing, filtering, and reward design, underpins the reliability of our cross-domain findings. Leveraging these insights and training purely with RL on GURU, our GURU-7B and GURU-32B models demonstrate significantly improved performance over leading open RL baselines, with gains of 7.3% and 7.8% respectively on an extensive 17-task, six-domain evaluation suite. We are releasing the GURU dataset, models, code, and evaluation suite to support further research towards more general RL-enhanced reasoning models.
-          </p>
+            Reinforcement learning (RL) has emerged as a promising approach to improve large language model (LLM) reasoning, yet most open efforts focus narrowly on math and code, limiting our understanding of its broader applicability to general reasoning. 
+            A key challenge lies in the lack of reliable, scalable RL reward signals across diverse reasoning domains.
+            We introduce GURU, a curated RL reasoning corpus of 92K verifiable examples spanning six reasoning domains—Math, Code, Science, Logic, Simulation, and Tabular—each built through domain-specific reward design, deduplication, and filtering to ensure reliability and effectiveness for RL training.
+            Based on GURU, we systematically revisit established findings in RL for LLM reasoning and observe significant variation across domains. For example, while prior work suggests that RL primarily elicits existing knowledge from pretrained models, our results reveal a more nuanced pattern: domains frequently seen during pretraining (Math, Code, Science) easily benefit from cross-domain RL training, while domains with limited pretraining exposure (Logic, Simulation, Tabular) require in-domain training to achieve meaningful performance gains, suggesting that RL is likely to facilitate genuine skill acquisition.
+            Finally, we present GURU-7B/32B, two models that achieve state-of-the-art performance among open models RL-trained with publicly available data, outperforming best baselines by 7.9% and 6.7% on our 17-task evaluation suite across six reasoning domains. We also show that our models effectively improve the Pass@k performance of their base models, particularly on complex tasks less likely to appear in pretraining data. We release data, models, training and evaluation code to facilitate general-purpose reasoning research at our code repository.          </p>
         </div>
       </div>
     </div>
@@ -172,10 +175,36 @@
         <h2 class="title is-3">1. Introduction</h2>
         <div class="content has-text-justified">
           <p>
-            Recent frontier reasoning models trained with reinforcement learning (RL), such as OpenAI-01 and DeepSeek-R1, demonstrate impressive performance across diverse reasoning tasks. While many open-source efforts have attempted to unveil successful RL strategies, many analyses and training recipes are constrained to Math and Code domains. However, whether these models can be reliably extended to other domains has not been adequately established. This leaves two key questions: (1) to what extent do RL-enhanced reasoning abilities transfer between diverse domains, and (2) how can we build models that maintain high performance across these domains? A major obstacle is the lack of suitable data. Improving reasoning with RL heavily relies on the quality of the reward signal, unlike supervised fine-tuning (SFT).
+            Recent frontier reasoning models, such as OpenAI-O3 and DeepSeek-R1, demonstrate impressive performance and generalizability across diverse domains.
+            These advances heavily leverage reinforcement learning (RL) as a core post-training technique to enhance large language model (LLM) reasoning capabilities.
+            Motivated by these results, the open-source community has developed competitive reasoning models using RL and systematically studied the principles behind RL's effectiveness for reasoning.
           </p>
-          <h3 class="title is-4">Paper Video - TODO</h3>
-          <p>A video summary of the GURU paper would be here if available - TODO.</p>
+            
+          <p>
+            However, the vast majority of RL works for LLM reasoning train and evaluate RL models exclusively on math and code domains. The domain-specific concentration raises two critical limitations in understanding and improving general-purpose reasoning. First, the current understanding of RL's role in reasoning is predominantly derived from studies focused on math and coding, potentially limiting generalizability. For instance, recent observations about RL's fundamental mechanisms—whether it teaches new reasoning skills or merely elicits existing knowledge—may not generalize across other domains.
+            Second, this approach produces models that excel only within their specialized training domains, limiting both our understanding of how RL enables reasoning and practical performance gains across diverse reasoning tasks. Consequently, studying RL across multiple domains is essential for advancing general reasoning research and deepening our understanding of RL's contributions.
+          </p>
+            
+          <p>
+            A key bottleneck in extending RL-based reasoning to diverse domains is the scarcity of reliable reward signals and curated training data. Math and code problems are more widely sourced and studied, and offer easily verifiable answers. However, reasoning domains beyond them usually require more careful and creative data sourcing and domain-specific reward design. Even for math and coding domains, where queries and reward signals are more readily available, publicly available datasets require extensive curation to address common issues: duplicates, noisy samples, and unbalanced difficulty distributions.
+          </p>
+            
+          <p>
+            We introduce GURU, a curated RL corpus spanning six diverse reasoning domains: Math, Code, Science, Logic, Simulation, and Tabular. Each domain within GURU is constructed via a meticulous data pipeline designed to ensure reliability and utility for RL. The pipeline involves: data sourcing and synthesis, deduplication, domain-specific reward function design (with rule, execution, or model-based verification) for precise feedback, and both heuristic and model-based filtering to remove noisy or trivial examples and to ensure an appropriate difficulty distribution. The final corpus offers 92k examples, each paired with a verifiable reward signal, establishing a foundational and openly available benchmark to systematically conduct research on general-purpose reasoning with RL.
+          </p>
+            
+          <p>
+            By performing RL on six domains in GURU with Qwen2.5-7B and 32B base models, we revisit established insights in RL-based reasoning and observe that these conclusions are domain-dependent.
+            Most critically, prior work suggests RL primarily elicits existing knowledge from pretrained models rather than learning new capabilities, even with indirect or minimal elicitation like wrong or random labels or even performing RL from a single example. As shown in Figure 1 (Left), domains frequently seen during continual pretraining (Math, Code, Science) readily show performance gains from cross-domain RL training (warm colors on non-diagonal cells), indicating reasoning capabilities are more easily elicited in these domains even with cross-domain data. In contrast, relatively less familiar domains (Logic, Simulation, Tabular) require in-domain RL training to achieve meaningful improvements (cold colors on all non-diagonal cells) suggesting RL is more likely to learn new skills in these cases.
+            Additionally, we find that response length increases correlate with performance gains only in certain domains, and difficulty filtering improves within-domain performance while harming cross-domain transfer.
+            These findings reveal that RL reasoning mechanisms are more domain-specific than previously recognized, emphasizing the need for multi-domain training and evaluation in RL for LLM reasoning research.
+          </p>
+            
+          <p>
+            Finally, we deliver GURU-7B and GURU-32B, two general reasoning models trained with RL on the GURU dataset. On our unified evaluation suite with 17 reasoning tasks across six domains, our models establish a new state-of-the-art among open models trained with publicly available data, outperforming the best baselines by 7.9% and 6.7% respectively.
+            Furthermore, we observe that Pass@k patterns of RL-trained and base models, which is defined as the LLM's reasoning boundary, vary by tasks, model scales, and generation parameters (e.g., temperature and top-p). For example, on a synthetic Zebra Puzzle task, a complex constraint satisfaction problem that is less likely to appear in pretraining data, both GURU-7B and GURU-32B effectively expand the reasoning boundary of their base models.
+            Overall, these substantial performance gains and cross-domain findings demonstrate the importance of multi-domain RL research for advancing general reasoning capabilities. We release the GURU dataset, models, and code at https://github.com/LLM360/Reasoning360 for the community's use and continued study.
+          </p>
         </div>
       </div>
     </div>
@@ -187,22 +216,36 @@
 
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">2. The GURU Dataset</h2>
+        <h2 class="title is-3 has-text-centered">2. Data Construction</h2>
         <div class="content has-text-justified">
+          <h3 class="title is-4 has-text-centered">2.1 Data Sources</h3>
           <p>
-            Datasets for Reinforcement Learning from Verifiable Rewards (RLVR) predominantly focus on narrow domains like Math and Code, often leading to overfitting. Current RLVR datasets can also suffer from redundancy, noisy queries, and poor difficulty calibration. To address these issues, we constructed a comprehensive pipeline for GURU, a multi-domain, reward-verifiable dataset.
+            We curated data across six reasoning-intensive domains to ensure diversity and verifiability: Math, sourced from OR1, DAPO, and DeepScaler, covering competition problems such as AIME and AMC; Code, collected from LeetCode, TACO-Verified, PrimeIntellect, and LiveCodeBench, with both real-world and synthetic coding tasks, including filtered subsets from DeepCoder; Science, drawn from WebInstruct-Verified, a web-based collection refined by LLMs; Logic, combining datasets such as ARC-AGI and BARC with synthetic tasks like Zebra Puzzle, Ordering Puzzles, and Graph Search; Simulation, from Code I/O (PyEdu), involving code reasoning without execution; and Tabular, repurposing QA datasets like HiTab and MultiHierTT for single- and multi-table reasoning.
           </p>
-          <h3 class="title is-4 has-text-centered">2.1 Data Pipeline</h3>
-          <p>
-            Figure 2 (not provided as an image, description - TODO) presents our five-stage data curation pipeline: (1) Data Sourcing from diverse domains (Math, Code, Science, Logic, Simulation, Tabular); (2) Deduplication to ensure diversity; (3) Reward Design (rule-based, execution-based, or model-based); (4) Heuristic Filtering to remove noise; and (5) Difficulty Filtering to focus on challenging and reliable samples. The resulting GURU corpus contains 92k examples.
-          </p>
-          <div class="has-text-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
-            <h4 class="title is-5">The Guru Dataset (Table 1)</h4>
-            <img src="./static/images/The Guru Dataset.PNG" alt="The Guru Dataset.PNG" style="max-width: 100%; height: auto;">
-            <p class="is-italic" style="margin-top: 0.5rem;">Dataset statistics across all 6 domains.</p>
+          <h3 class="title is-4 has-text-centered">2.2 Data Pipeline</h3>
+          <div class="columns is-vcentered" style="margin-top: 1rem; margin-bottom: 1rem;">
+            <div class="column is-two-thirds">
+              <p>
+                The construction pipeline for this multi-domain RL dataset has five key stages: 
+                <br>
+                (1) <b> Data Sourcing</b>: Curating datasets across Math, Code, Science, Logic, Simulation, and Tabular domains; 
+                <br>
+                (2) <b>Data Deduplication</b>: Removing overlapping content using strict substring matching, resulting in 27.2% Math and 7.5% Code sample reduction; 
+                <br>
+                (3) <b>Reward Design</b>: Implementing domain-specific verification - rule-based for Math/Logic/Simulation/Tabular, execution-based for Code, and model-based for Science; 
+                <br>
+                (4) <b>Heuristic Filtering</b>: Removing noisy samples and controlling complexity with uniform sampling for large categories; 
+                <br>
+                (5) <b>Difficulty Filtering</b>: Selecting samples based on model performance gaps to ensure appropriate challenge levels. The final GURU corpus contains 92k examples.
+              </p>
+            </div>
+            <div class="column is-one-third has-text-centered">
+              <figure class="image" style="width: 100%; margin: 0 auto; min-height: 280px;">
+                <img src="./static/images/sec2_data_pipeline_v2.svg" alt="Data Pipeline Diagram" style="width: 100%; height: auto;">
+              </figure>
+            </div>
           </div>
-          <p>Detailed data sources and sample scales for each domain are summarized in Table 1. For example, Math sources include OR1, DAPO, and DeepScaler. Code sources include LeetCode, TACO-Verified, PrimeIntellect, and LiveCodeBench. Science data is from WebInstruct-Verified. Logic includes existing datasets like ARC-AGI and BARC, plus synthetic tasks like Zebra Puzzle. Simulation tasks are from Code I/O (PyEdu). Tabular tasks repurpose HiTab and MultiHierTT.</p>
-        </div>
+        </div>        
       </div>
     </div>
     <div class="columns is-centered" style="margin-top: 2rem;">
@@ -214,7 +257,7 @@
           </p>
           <div class="has-text-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
             <h4 class="title is-5">Analysis of Cross-Domain Reasoning Transfer (Figure 3)</h4>
-            <img src="./static/images/Analysis of Cross-Domain Reasoning Transfer.PNG" alt="Analysis of Cross-Domain Reasoning Transfer.PNG" style="max-width: 100%; height: auto;">
+            <img src="./static/images/fig3.svg" alt="Analysis of Cross-Domain Reasoning Transfer" style="max-width: 100%; height: auto;">
             <p class="is-italic" style="margin-top: 0.5rem;">RL Model Cross-Domain Transfer Performance. Heatmap shows normalized performance gains.</p>
           </div>
           <h3 class="title is-4">3.1 Differential Transferability</h3>
@@ -224,8 +267,14 @@
           <p>
             Mixed-domain training on a uniformly mixed dataset often matched or exceeded single-domain performance.
           </p>
-          <h3 class="title is-4">3.2 Reward and Response-Length Dynamics - TODO</h3>
+          <h3 class="title is-4">3.2 Reward and Response-Length Dynamics </h3>
+          <div class="has-text-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
+            <h4 class="title is-5">Reward and Response Length Analysis</h4>
+            <img src="./static/images/reward_response_length_comparison.svg" alt="Reward and Response Length Comparison" style="max-width: 100%; height: auto;">
+            <p class="is-italic" style="margin-top: 0.5rem;">Analysis of reward signals and response length changes during training.</p>
+          </div>
           <p>Figure 4 (not provided as an image - TODO) illustrates reward and response length. In single-domain training, Code, Logic, and Tabular tasks saw contracted outputs, while Science and Math became more verbose. Joint training led to steep reward climbs initially and could reshape length dynamics.</p>
+          
           <h3 class="title is-4">3.3 Effects of Training Data Difficulty - TODO</h3>
           <p>Table 2 (not provided as an image - TODO) shows that training on harder math data improved in-domain math performance but could degrade performance on easier cross-domain tasks. For beneficial cross-domain transfer, a balanced distribution of difficulties or explicit inclusion of cross-domain data may be more effective.</p>
         </div>
@@ -241,12 +290,31 @@
           <h3 class="title is-4 has-text-centered">4.2 Results</h3>
           <div class="has-text-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
             <h4 class="title is-5">Main Experiment Results (Table 3)</h4>
-            <img src="./static/images/Main Experiment Results.PNG" alt="Main Experiment Results.PNG" style="max-width: 100%; height: auto;">
+            <img src="./static/images/bench.png" alt="Main Experiment Results.PNG" style="max-width: 100%; height: auto;">
             <p class="is-italic" style="margin-top: 0.5rem;">Full 17 benchmark performance on 7B and 32B Models. GURU outperforms Baselines.</p>
           </div>
           <p>
             As shown in Table 3, GURU-7B and GURU-32B consistently demonstrate more balanced and advanced performance. GURU-7B achieved an average score of 41.17%, outperforming Open-Reasoner-Zero-7B by 7.3%. GURU-32B attained 52.68%, surpassing Open-Reasoner-Zero-32B by over 7.8%. These results highlight the GURU dataset's effectiveness in promoting a wide scope of reasoning ability.
           </p>
+
+          <h3 class="title is-4 has-text-centered">4.3 Analysis of Pass@k Curves</h3>
+          <div class="has-text-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
+            <h4 class="title is-5">Main Experiment Results</h4>
+            <div class="columns is-centered">
+              <div class="column is-one-third">
+                <img src="./static/images/pass_k_comparison.svg" alt="Pass@k Comparison" style="width: 100%; height: auto;">
+                <p class="is-italic" style="margin-top: 0.5rem;">Pass@k analysis across different models.</p>
+              </div>
+              <div class="column is-two-thirds">
+                <img src="./static/images/temp_top_comparison.svg" alt="Top Model Comparison" style="width: 100%; height: auto;">
+                <p class="is-italic" style="margin-top: 0.5rem;">Performance comparison across models.</p>
+              </div>
+            </div>
+          </div>
+          <p>
+            As shown in Table 3, GURU-7B and GURU-32B consistently demonstrate more balanced and advanced performance. GURU-7B achieved an average score of 41.17%, outperforming Open-Reasoner-Zero-7B by 7.3%. GURU-32B attained 52.68%, surpassing Open-Reasoner-Zero-32B by over 7.8%. These results highlight the GURU dataset's effectiveness in promoting a wide scope of reasoning ability.
+          </p>
+
         </div>
       </div>
     </div>
