@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="GURU investigates cross-domain reinforcement learning for general reasoning in LLMs, introducing a new dataset and models.">
-  <meta name="keywords" content="GURU, Reinforcement Learning, LLMs, General Reasoning, Cross-Domain Generalization, AI">
+        content="Revisiting Reinforcement Learning for LLM Reasoning from A Cross-Domain Perspective">
+  <!-- <meta name="keywords" content="Guru, Reinforcement Learning, LLMs, General Reasoning, Cross-Domain Generalization, AI"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GURU: Towards General Reasoning via Cross-Domain Reinforcement Learning</title>
+  <title>Revisiting Reinforcement Learning for LLM Reasoning from A Cross-Domain Perspective</title>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL-TODO"></script>
   <script>
@@ -49,7 +49,7 @@
       font-size: 0.85rem;
     }
 
-    /* Highlight GURU columns (1-based index) */
+    /* Highlight Guru columns (1-based index) */
     #results-table .guru-col {
       background-color: #d0e7ff !important; /* light blue, !important to override other styles */
       font-weight: bold;
@@ -112,6 +112,48 @@
     #dataset-stats-table tfoot td {
       font-weight: bold;
     }
+
+    /* Author styling */
+    .publication-authors-section {
+      font-size: 1rem;
+    }
+    
+    .author-name {
+      display: inline-block;
+      margin-right: 0.75rem;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+    
+    .author-name:last-child {
+      margin-right: 0;
+    }
+    
+    .author-row {
+      text-align: center;
+    }
+    
+    .affiliation {
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .equal-contribution {
+      text-align: center;
+    }
+    
+    /* Responsive design for authors */
+    @media (max-width: 768px) {
+      .author-row {
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+      
+      .affiliation-list {
+        flex-direction: column;
+        gap: 0.5rem !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -126,7 +168,7 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="#GURU-project-home-TODO">
+      <a class="navbar-item" href="#Guru-project-home-TODO">
       <span class="icon">
           <i class="fas fa-home"></i>
       </span>
@@ -137,17 +179,11 @@
           More Research
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="#related-paper-1-TODO">
-            Related Paper 1 - TODO
+          <a class="navbar-item" href="https://www.llm360.ai/">
+            LLM360: A fully-reproducible large language model
           </a>
-          <a class="navbar-item" href="#GURU-dataset-details-TODO">
-            GURU Dataset - TODO
-          </a>
-          <a class="navbar-item" href="#GURU-models-TODO">
-            GURU Models - TODO
-          </a>
-          <a class="navbar-item" href="#future-work-TODO">
-            Future Work - TODO
+          <a class="navbar-item" href="https://github.com/maitrix-org/llm-reasoners">
+            LLM-Reasoners: A library for LLM complex reasoning
           </a>
         </div>
       </div>
@@ -160,34 +196,64 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">GURU: Towards General Reasoning via Cross-Domain Reinforcement Learning</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><a href="#author-tianyang-liu-TODO">Tianyang Liu</a><sup>1,*</sup>,</span>
-            <span class="author-block"><a href="#author-OpenAl-03-TODO">OpenAl 03</a><sup>2,*</sup>,</span>
-            <span class="author-block"><a href="#author-Claude-Sonnet-43-TODO">Claude Sonnet 43</a><sup>3,*</sup></span>
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of California San Diego,</span>
-            <span class="author-block"><sup>2</sup>OpenAI,</span>
-            <span class="author-block"><sup>3</sup>Anthropic</span>
-            <br>
-            <span class="author-block"><sup>*</sup>Equal Contribution</span>
-            <br>
-            <span class="author-block">Date: June 4, 2025</span>
+          <h1 class="title is-2 publication-title">Revisiting Reinforcement Learning for LLM Reasoning from A Cross-Domain Perspective</h1>
+          <!-- Authors Section -->
+          <div class="publication-authors-section" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+            <!-- Authors List -->
+            <div class="authors-list" style="line-height: 1.6; margin-bottom: 1.5rem;">
+              <div class="author-row" style="margin-bottom: 0.5rem;">
+                <span class="author-name">Zhoujun Cheng<sup>1,*</sup></span>,
+                <span class="author-name">Shibo Hao<sup>1,*</sup></span>,
+                <span class="author-name">Tianyang Liu<sup>1,*</sup></span>,
+                <span class="author-name">Fan Zhou<sup>2</sup></span>,
+                <span class="author-name">Yutao Xie<sup>1</sup></span>,
+                <span class="author-name">Feng Yao<sup>1</sup></span>
+              </div>
+              <div class="author-row" style="margin-bottom: 0.5rem;">
+                <span class="author-name">Yuexin Bian<sup>1</sup></span>,
+                <span class="author-name">Yonghao Zhuang<sup>3</sup></span>,
+                <span class="author-name">Nilabjo Dey<sup>4</sup></span>,
+                <span class="author-name">Yuheng Zha<sup>1</sup></span>,
+                <span class="author-name">Yi Gu<sup>1</sup></span>,
+                <span class="author-name">Kun Zhou<sup>1</sup></span>
+              </div>
+              <div class="author-row" style="margin-bottom: 0.5rem;">
+                <span class="author-name">Yuqi Wang<sup>2</sup></span>,
+                <span class="author-name">Yuan Li<sup>3</sup></span>,
+                <span class="author-name">Richard Fan<sup>2</sup></span>,
+                <span class="author-name">Jianshu She<sup>2</sup></span>,
+                <span class="author-name">Chengqian Gao<sup>2</sup></span>,
+                <span class="author-name">Abulhair Saparov<sup>4</sup></span>
+              </div>
+              <div class="author-row">
+                <span class="author-name">Haonan Li<sup>2</sup></span>,
+                <span class="author-name">Taylor W. Killian<sup>2</sup></span>,
+                <span class="author-name">Mikhail Yurochkin<sup>2</sup></span>,
+                <span class="author-name">Zhengzhong Liu<sup>2</sup></span>,
+                <span class="author-name">Eric P. Xing<sup>2,3</sup></span>,
+                <span class="author-name">Zhiting Hu<sup>1</sup></span>
+              </div>
+            </div>
+            
+            <!-- Affiliations -->
+            <div class="affiliations" style="margin-bottom: 1rem;">
+              <div class="affiliation-list" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 0.75rem;">
+                <span class="affiliation"><sup>1</sup>UC San Diego</span>
+                <span class="affiliation"><sup>2</sup>MBZUAI</span>
+                <span class="affiliation"><sup>3</sup>Carnegie Mellon University</span>
+                <span class="affiliation"><sup>4</sup>Purdue University</span>
+              </div>
+              <div class="equal-contribution" style="font-style: italic; color: #666; font-size: 0.9rem;">
+                <sup>*</sup>Equal Contribution
+              </div>
+            </div>
           </div>
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
                 <a href="./Guru_Arxiv.pdf" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2506.14965"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>ArXiv</span>
+                  <span>Arxiv</span>
                 </a>
               </span>
               <span class="link-block">
@@ -201,7 +267,14 @@
                 <a href="https://huggingface.co/datasets/LLM360/guru-RL-92k"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="far fa-images"></i></span>
-                  <span>Hugging Face</span>
+                  <span>Data</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/LLM360/guru-7B"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-lightbulb"></i></span>
+                  <span>Model</span>
                 </a>
               </span>
             </div>
@@ -224,9 +297,7 @@
         </div>
       </div>
       <h2 class="subtitle has-text-centered">
-        GURU presents a systematic investigation into cross-domain RL generalization, introducing a meticulously curated 92K RL-for-reasoning dataset and models demonstrating significantly improved performance.
-      </h2>
-    </div>
+        <b>Guru</b> introduces a curated 92K multi-domain RL-for-reasoning dataset and models, enabling a systematic study of cross-domain RL and achieving strong general reasoning performance.  </h2>    </div>
   </div>
 </section>
 
@@ -239,49 +310,13 @@
           <p>
             Reinforcement learning (RL) has emerged as a promising approach to improve large language model (LLM) reasoning, yet most open efforts focus narrowly on math and code, limiting our understanding of its broader applicability to general reasoning. 
             A key challenge lies in the lack of reliable, scalable RL reward signals across diverse reasoning domains.
-            We introduce GURU, a curated RL reasoning corpus of 92K verifiable examples spanning six reasoning domains—Math, Code, Science, Logic, Simulation, and Tabular—each built through domain-specific reward design, deduplication, and filtering to ensure reliability and effectiveness for RL training.
-            Based on GURU, we systematically revisit established findings in RL for LLM reasoning and observe significant variation across domains. For example, while prior work suggests that RL primarily elicits existing knowledge from pretrained models, our results reveal a more nuanced pattern: domains frequently seen during pretraining (Math, Code, Science) easily benefit from cross-domain RL training, while domains with limited pretraining exposure (Logic, Simulation, Tabular) require in-domain training to achieve meaningful performance gains, suggesting that RL is likely to facilitate genuine skill acquisition.
-            Finally, we present GURU-7B/32B, two models that achieve state-of-the-art performance among open models RL-trained with publicly available data, outperforming best baselines by 7.9% and 6.7% on our 17-task evaluation suite across six reasoning domains. We also show that our models effectively improve the Pass@k performance of their base models, particularly on complex tasks less likely to appear in pretraining data. We release data, models, training and evaluation code to facilitate general-purpose reasoning research at our code repository.          </p>
+            We introduce Guru, a curated RL reasoning corpus of 92K verifiable examples spanning six reasoning domains—Math, Code, Science, Logic, Simulation, and Tabular—each built through domain-specific reward design, deduplication, and filtering to ensure reliability and effectiveness for RL training.
+            Based on Guru, we systematically revisit established findings in RL for LLM reasoning and observe significant variation across domains. For example, while prior work suggests that RL primarily elicits existing knowledge from pretrained models, our results reveal a more nuanced pattern: domains frequently seen during pretraining (Math, Code, Science) easily benefit from cross-domain RL training, while domains with limited pretraining exposure (Logic, Simulation, Tabular) require in-domain training to achieve meaningful performance gains, suggesting that RL is likely to facilitate genuine skill acquisition.
+            Finally, we present Guru-7B/32B, two models that achieve state-of-the-art performance among open models RL-trained with publicly available data, outperforming best baselines by 7.9% and 6.7% on our 17-task evaluation suite across six reasoning domains. We also show that our models effectively improve the Pass@k performance of their base models, particularly on complex tasks less likely to appear in pretraining data. We release data, models, training and evaluation code to facilitate general-purpose reasoning research at our code repository.          </p>
         </div>
       </div>
     </div>
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">1. Introduction</h2>
-        <div class="content has-text-justified">
-          <p>
-            Recent frontier reasoning models, such as OpenAI-O3 and DeepSeek-R1, demonstrate impressive performance and generalizability across diverse domains.
-            These advances heavily leverage reinforcement learning (RL) as a core post-training technique to enhance large language model (LLM) reasoning capabilities.
-            Motivated by these results, the open-source community has developed competitive reasoning models using RL and systematically studied the principles behind RL's effectiveness for reasoning.
-          </p>
-            
-          <p>
-            However, the vast majority of RL works for LLM reasoning train and evaluate RL models exclusively on math and code domains. The domain-specific concentration raises two critical limitations in understanding and improving general-purpose reasoning. First, the current understanding of RL's role in reasoning is predominantly derived from studies focused on math and coding, potentially limiting generalizability. For instance, recent observations about RL's fundamental mechanisms—whether it teaches new reasoning skills or merely elicits existing knowledge—may not generalize across other domains.
-            Second, this approach produces models that excel only within their specialized training domains, limiting both our understanding of how RL enables reasoning and practical performance gains across diverse reasoning tasks. Consequently, studying RL across multiple domains is essential for advancing general reasoning research and deepening our understanding of RL's contributions.
-          </p>
-            
-          <p>
-            A key bottleneck in extending RL-based reasoning to diverse domains is the scarcity of reliable reward signals and curated training data. Math and code problems are more widely sourced and studied, and offer easily verifiable answers. However, reasoning domains beyond them usually require more careful and creative data sourcing and domain-specific reward design. Even for math and coding domains, where queries and reward signals are more readily available, publicly available datasets require extensive curation to address common issues: duplicates, noisy samples, and unbalanced difficulty distributions.
-          </p>
-            
-          <p>
-            We introduce GURU, a curated RL corpus spanning six diverse reasoning domains: Math, Code, Science, Logic, Simulation, and Tabular. Each domain within GURU is constructed via a meticulous data pipeline designed to ensure reliability and utility for RL. The pipeline involves: data sourcing and synthesis, deduplication, domain-specific reward function design (with rule, execution, or model-based verification) for precise feedback, and both heuristic and model-based filtering to remove noisy or trivial examples and to ensure an appropriate difficulty distribution. The final corpus offers 92k examples, each paired with a verifiable reward signal, establishing a foundational and openly available benchmark to systematically conduct research on general-purpose reasoning with RL.
-          </p>
-            
-          <p>
-            By performing RL on six domains in GURU with Qwen2.5-7B and 32B base models, we revisit established insights in RL-based reasoning and observe that these conclusions are domain-dependent.
-            Most critically, prior work suggests RL primarily elicits existing knowledge from pretrained models rather than learning new capabilities, even with indirect or minimal elicitation like wrong or random labels or even performing RL from a single example. As shown in Figure 1 (Left), domains frequently seen during continual pretraining (Math, Code, Science) readily show performance gains from cross-domain RL training (warm colors on non-diagonal cells), indicating reasoning capabilities are more easily elicited in these domains even with cross-domain data. In contrast, relatively less familiar domains (Logic, Simulation, Tabular) require in-domain RL training to achieve meaningful improvements (cold colors on all non-diagonal cells) suggesting RL is more likely to learn new skills in these cases.
-            Additionally, we find that response length increases correlate with performance gains only in certain domains, and difficulty filtering improves within-domain performance while harming cross-domain transfer.
-            These findings reveal that RL reasoning mechanisms are more domain-specific than previously recognized, emphasizing the need for multi-domain training and evaluation in RL for LLM reasoning research.
-          </p>
-            
-          <p>
-            Finally, we deliver GURU-7B and GURU-32B, two general reasoning models trained with RL on the GURU dataset. On our unified evaluation suite with 17 reasoning tasks across six domains, our models establish a new state-of-the-art among open models trained with publicly available data, outperforming the best baselines by 7.9% and 6.7% respectively.
-            Furthermore, we observe that Pass@k patterns of RL-trained and base models, which is defined as the LLM's reasoning boundary, vary by tasks, model scales, and generation parameters (e.g., temperature and top-p). For example, on a synthetic Zebra Puzzle task, a complex constraint satisfaction problem that is less likely to appear in pretraining data, both GURU-7B and GURU-32B effectively expand the reasoning boundary of their base models.
-            Overall, these substantial performance gains and cross-domain findings demonstrate the importance of multi-domain RL research for advancing general reasoning capabilities. We release the GURU dataset, models, and code at https://github.com/LLM360/Reasoning360 for the community's use and continued study.
-          </p>
-        </div>
-      </div>
+ 
     </div>
     </div>
 </section>
@@ -291,166 +326,136 @@
 
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">2. Data Construction</h2>
-        <div class="content has-text-justified">
-          <h3 class="title is-4 has-text-centered">2.1 Data Sources</h3>
-          <p>
-            We curated data across six reasoning-intensive domains to ensure diversity and verifiability: Math, sourced from OR1, DAPO, and DeepScaler, covering competition problems such as AIME and AMC; Code, collected from LeetCode, TACO-Verified, PrimeIntellect, and LiveCodeBench, with both real-world and synthetic coding tasks, including filtered subsets from DeepCoder; Science, drawn from WebInstruct-Verified, a web-based collection refined by LLMs; Logic, combining datasets such as ARC-AGI and BARC with synthetic tasks like Zebra Puzzle, Ordering Puzzles, and Graph Search; Simulation, from Code I/O (PyEdu), involving code reasoning without execution; and Tabular, repurposing QA datasets like HiTab and MultiHierTT for single- and multi-table reasoning.
-          </p>
-          <h3 class="title is-4 has-text-centered">2.2 Data Pipeline</h3>
-          <div class="columns is-vcentered" style="margin-top: 1rem; margin-bottom: 1rem;">
-            <div class="column is-two-thirds">
-              <p>
-                The construction pipeline for this multi-domain RL dataset has five key stages: 
-                <br>
-                (1) <b> Data Sourcing</b>: Curating datasets across Math, Code, Science, Logic, Simulation, and Tabular domains; 
-                <br>
-                (2) <b>Data Deduplication</b>: Removing overlapping content using strict substring matching, resulting in 27.2% Math and 7.5% Code sample reduction; 
-                <br>
-                (3) <b>Reward Design</b>: Implementing domain-specific verification - rule-based for Math/Logic/Simulation/Tabular, execution-based for Code, and model-based for Science; 
-                <br>
-                (4) <b>Heuristic Filtering</b>: Removing noisy samples and controlling complexity with uniform sampling for large categories; 
-                <br>
-                (5) <b>Difficulty Filtering</b>: Selecting samples based on model performance gaps to ensure appropriate challenge levels. The final GURU corpus contains 92k examples.
-              </p>
-            </div>
-            <div class="column is-one-third has-text-centered">
-              <figure class="image" style="width: 100%; margin: 0 auto; min-height: 280px;">
-                <img src="./static/images/sec2_data_pipeline_v2.svg" alt="Data Pipeline Diagram" style="width: 100%; height: auto;">
-              </figure>
-            </div>
-          </div>
 
-          <!-- New Table 1 Here -->
-          <div class="content">
-            <h4 class="title is-5 has-text-centered" style="margin-top: 3rem;">Table 1: GURU dataset statistics across all 6 domains</h4>
-            <div class="table-container">
-                <table id="dataset-stats-table" class="table is-bordered is-fullwidth">
-                    <thead>
-                        <tr>
-                            <th>Domain</th>
-                            <th class="dataset-col">Dataset</th>
-                            <th>Raw Size</th>
-                            <th>w/ Dedup. &<br>Domain Filt.</th>
-                            <th>w/ Difficulty<br>Filt.</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Math -->
-                        <tr>
-                            <th rowspan="3">Math</th>
-                            <td class="dataset-col">OR1 (He et al., 2025)</td><td>105k</td>
-                            <td rowspan="3" class="centered-col">118.2k<span class="percent">(-27.2%)</span></td>
-                            <td rowspan="3" class="centered-col">54.4k<span class="percent">(-54.0%)</span></td>
-                        </tr>
-                        <tr><td class="dataset-col">DAPO (Yu et al., 2025)</td><td>17k</td></tr>
-                        <tr><td class="dataset-col">DeepScaler (Luo et al., 2025b)</td><td>40.3k</td></tr>
 
-                        <!-- Code -->
-                        <tr>
-                            <th rowspan="4">Code</th>
-                            <td class="dataset-col">LeetCode (Xia et al., 2025)</td><td>2k</td>
-                            <td rowspan="4" class="centered-col">23.7k<span class="percent">(-26.2%)</span></td>
-                            <td rowspan="4" class="centered-col">18.1k<span class="percent">(-23.6%)</span></td>
-                        </tr>
-                        <tr><td class="dataset-col">TACO-Verified (Li, 2024)</td><td>12.9k</td></tr>
-                        <tr><td class="dataset-col">PrimeIntellect (Mattern et al., 2025)</td><td>16.3k</td></tr>
-                        <tr><td class="dataset-col">LiveCodeBench (history) (Jain et al., 2024)</td><td>0.9k</td></tr>
 
-                        <!-- Science -->
-                        <tr>
-                            <th>Science</th>
-                            <td class="dataset-col">WebInstruct-Verifed (Ma et al., 2025)</td><td>232k</td>
-                            <td class="centered-col">31.7k<span class="percent">(-86.3%)</span></td>
-                            <td class="centered-col">3.6k<span class="percent">(-88.6%)</span></td>
-                        </tr>
-
-                        <!-- Logic -->
-                        <tr>
-                            <th rowspan="6">Logic</th>
-                            <td class="dataset-col">Zebra Puzzle</td><td>5.7k</td>
-                            <td rowspan="6" class="centered-col">13.6k<span class="percent">(-12.8%)</span></td>
-                            <td rowspan="6" class="centered-col">6.3k<span class="percent">(-53.7%)</span></td>
-                        </tr>
-                        <tr><td class="dataset-col">Ordering Puzzle</td><td>2.9k</td></tr>
-                        <tr><td class="dataset-col">Graph Puzzle</td><td>2.8k</td></tr>
-                        <tr><td class="dataset-col">ARC-AGI (Chollet et al., 2024)</td><td>0.4k</td></tr>
-                        <tr><td class="dataset-col">ARC-AGI-2 (Chollet et al., 2025)</td><td>1k</td></tr>
-                        <tr><td class="dataset-col">BARC (Li et al., 2024b)</td><td>3.4k</td></tr>
-
-                        <!-- Simulation -->
-                        <tr>
-                            <th>Simulation</th>
-                            <td class="dataset-col">Code I/O (PyEdu) (Li et al., 2025)</td><td>227k</td>
-                            <td class="centered-col">12.1k<span class="percent">(-94.7%)</span></td>
-                            <td class="centered-col">3.7k<span class="percent">(-69.4%)</span></td>
-                        </tr>
-
-                        <!-- Tabular -->
-                        <tr>
-                            <th rowspan="2">Tabular</th>
-                            <td class="dataset-col">HiTab (Cheng et al., 2021)</td><td>7.5k</td>
-                            <td rowspan="2" class="centered-col">10.3k<span class="percent">(-36.7%)</span></td>
-                            <td rowspan="2" class="centered-col">6.1k<span class="percent">(-32.7%)</span></td>
-                        </tr>
-                        <tr><td class="dataset-col">MultiHierTT (Zhao et al., 2022)</td><td>7.8k</td></tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th colspan="2">Total</th>
-                            <td>684.9k</td>
-                            <td class="centered-col">209.6k</td>
-                            <td class="centered-col">91.9k</td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-          </div>
-        </div>        
-      </div>
-    </div>
-    <div class="columns is-centered" style="margin-top: 2rem;">
+    <div class="columns is-centered" style="margin-top: 0.8rem;">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">3. Analysis of Cross-Domain Reasoning Transfer</h2>
+        <h2 class="title is-3 has-text-centered">Cross-Domain Reasoning Transfer</h2>
         <div class="content has-text-justified">
           <p>
-            To understand how reasoning capabilities generalize with RL, we conducted controlled experiments using GURU. We investigated the impact of RL on single reasoning domains versus a mixed-domain corpus. An experimental dataset, GURU-18K (3K samples from each of the six domains), was used.
+            To understand how reasoning capabilities generalize with RL, we conducted controlled experiments using Guru. We investigated the impact of RL on single reasoning domains versus a mixed-domain corpus. An experimental dataset, Guru-18K (3K samples from each of the six domains), was used.
           </p>
-          <div class="has-text-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
-            <h4 class="title is-5">Analysis of Cross-Domain Reasoning Transfer (Figure 3)</h4>
-            <img src="./static/images/fig3.svg" alt="Analysis of Cross-Domain Reasoning Transfer" style="max-width: 100%; height: auto;">
-            <p class="is-italic" style="margin-top: 0.5rem;">RL Model Cross-Domain Transfer Performance. Heatmap shows normalized performance gains.</p>
-          </div>
-          <h3 class="title is-4">3.1 Differential Transferability</h3>
+          <h3 class="title is-4">Differential Transferability</h3>
+          <img src="./static/images/fig3.svg" alt="Analysis of Cross-Domain Reasoning Transfer" style="max-width: 100%; height: auto;">
+
           <p>
-            Math, Code, and Science benchmarks consistently improved significantly from training on other domains, possibly due to extensive exposure to these tokens during pretraining. Other domains showed limited cross-domain gains. Easier tasks within Math and Code showed positive transfer more readily than challenging benchmarks in the same domains.
+            Math, Code, and Science benchmarks consistently improved significantly from training on other domains, possibly due to extensive exposure to these tokens during pretraining. Other domains showed limited cross-domain gains. Easier tasks within Math and Code showed positive transfer more readily than challenging benchmarks in the same domains. Mixed-domain training on a uniformly mixed dataset often matched or exceeded single-domain performance.
           </p>
           <p>
-            Mixed-domain training on a uniformly mixed dataset often matched or exceeded single-domain performance.
           </p>
-          <h3 class="title is-4">3.2 Reward and Response-Length Dynamics </h3>
+          <h3 class="title is-4">Reward and Response-Length Dynamics </h3>
           <div class="has-text-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
-            <h4 class="title is-5">Reward and Response Length Analysis</h4>
+            <!-- <h4 class="title is-5">Reward and Response Length Analysis</h4> -->
             <img src="./static/images/reward_response_length_comparison.svg" alt="Reward and Response Length Comparison" style="max-width: 100%; height: auto;">
-            <p class="is-italic" style="margin-top: 0.5rem;">Analysis of reward signals and response length changes during training.</p>
+            <!-- <p class="is-italic" style="margin-top: 0.5rem;">Analysis of reward signals and response length changes during training.</p> -->
           </div>
-          <p>Figure 4 (not provided as an image - TODO) illustrates reward and response length. In single-domain training, Code, Logic, and Tabular tasks saw contracted outputs, while Science and Math became more verbose. Joint training led to steep reward climbs initially and could reshape length dynamics.</p>
+          <p>In single-domain training, Code, Logic, and Tabular tasks saw contracted outputs, while Science and Math became more verbose. Joint training led to steep reward climbs initially and could reshape length dynamics.</p>
           
-          <h3 class="title is-4">3.3 Effects of Training Data Difficulty - TODO</h3>
-          <p>Table 2 (not provided as an image - TODO) shows that training on harder math data improved in-domain math performance but could degrade performance on easier cross-domain tasks. For beneficial cross-domain transfer, a balanced distribution of difficulties or explicit inclusion of cross-domain data may be more effective.</p>
+          <h3 class="title is-4">Effects of Training Data Difficulty</h3>
+          <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse; text-align: center; font-family: sans-serif;">
+            <thead>
+              <tr style="background-color: white; font-weight: bold;">
+                <th colspan="4">Math (in-domain)</th>
+                <th colspan="4">Code & Tabular (cross-domain)</th>
+              </tr>
+              <tr style="background-color: white; font-weight: bold;">
+                <th>MATH500</th>
+                <th>AMC</th>
+                <th>AIME24</th>
+                <th></th>
+                <th>HumanEval</th>
+                <th>LiveCodeBench</th>
+                <th>HiTab</th>
+                <th>Multihiertt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>75.8</td>
+                <td>52.1</td>
+                <td>15.8</td>
+                <td style="background-color: white;"></td>
+                <td>82.3</td>
+                <td>11.1</td>
+                <td>56.5</td>
+                <td>32.0</td>
+              </tr>
+              <tr>
+                <td>78.6</td>
+                <td>58.4</td>
+                <td>21.7</td>
+                <td style="background-color: white;"></td>
+                <td>73.1</td>
+                <td>10.7</td>
+                <td>53.5</td>
+                <td>35.5</td>
+              </tr>
+              <tr style="font-weight: bold;">
+                <td style="background-color: #fde0d8;">+2.8</td>
+                <td style="background-color: #fcbba1;">+6.3</td>
+                <td style="background-color: #fc9272;">+5.9</td>
+                <td style="background-color: white;">&#x25B3; (+/-)</td>
+                <td style="background-color: #9ecae1;">-9.2</td>
+                <td style="background-color: #d9d9d9;">-0.4</td>
+                <td style="background-color: #9ecae1;">-3.0</td>
+                <td style="background-color: #fde0d8;">+3.5</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p>Training on harder math data improved in-domain math performance but could degrade performance on easier cross-domain tasks. For beneficial cross-domain transfer, a balanced distribution of difficulties or explicit inclusion of cross-domain data may be more effective.</p>
         </div>
       </div>
     </div>
-    <div class="columns is-centered" style="margin-top: 2rem;">
+    <h2 class="title is-3 has-text-centered" style="margin-top: 6rem">Data Construction</h2>
+    <div class="content has-text-justified">
+
+      <div class="columns is-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
+        <div class="pipeline-container" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; border-left: 4px solid #007bff;">
+          <!-- <h4 style="color: #2c3e50; margin-bottom: 1.5rem; font-weight: 600; text-align: center;">5-Stage Data Pipeline</h4> -->
+          <div class="pipeline-steps" style="display: grid; gap: 1rem;">
+            <div class="pipeline-step" style="display: flex; align-items: center; padding: 0.75rem; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <span style="background: #1e3a8a; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">1</span>
+              <div><strong>Data Sourcing</strong> — Curating datasets across Math, Code, Science, Logic, Simulation, and Tabular domains</div>
+            </div>
+            <div class="pipeline-step" style="display: flex; align-items: center; padding: 0.75rem; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <span style="background: #1d4ed8; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">2</span>
+              <div><strong>Deduplication</strong> — Removing overlapping content via substring matching (27.2% Math, 7.5% Code reduction)</div>
+            </div>
+            <div class="pipeline-step" style="display: flex; align-items: center; padding: 0.75rem; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <span style="background: #2563eb; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">3</span>
+              <div><strong>Reward Design</strong> — Domain-specific verification: rule-based, execution-based, and model-based</div>
+            </div>
+            <div class="pipeline-step" style="display: flex; align-items: center; padding: 0.75rem; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <span style="background: #3b82f6; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">4</span>
+              <div><strong>Heuristic Filtering</strong> — Removing noise and controlling complexity with uniform sampling</div>
+            </div>
+            <div class="pipeline-step" style="display: flex; align-items: center; padding: 0.75rem; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <span style="background: #60a5fa; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0;">5</span>
+              <div><strong>Difficulty Filtering</strong> — Selecting samples based on model performance gaps for appropriate challenge levels</div>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 1.5rem; padding: 1rem; background: #dbeafe; border-radius: 8px;">
+            <strong style="color: #1e40af; font-size: 1.1rem;">Final Result: 92K curated examples</strong>
+          </div>
+        </div>
+        <!-- <div class="column is-one-third has-text-centered">
+          <figure class="image" style="width: 100%; margin: 0 auto; min-height: 280px;">
+            <img src="./static/images/sec2_data_pipeline_v2.svg" alt="Data Pipeline Diagram" style="width: 100%; height: auto;">
+          </figure>
+        </div> -->
+      </div>
+    <div class="columns is-centered" style="margin-top: 4rem;">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">4. Main Experiment</h2>
+        <h2 class="title is-3 has-text-centered">Experiment Results</h2>
         <div class="content has-text-justified">
           <p>
-            We trained 7B and 32B models on the full GURU dataset to demonstrate the practical impact of multi-domain data. We used verl as the RL training framework and GRPO as the algorithm. The 7B model was trained for 2 epochs on 4 nodes (8 Hopper GPUs each) and the 32B model on 16 nodes for 2 epochs.
+            We trained 7B and 32B models on the full Guru dataset to demonstrate the practical impact of multi-domain data. We used verl as the RL training framework and GRPO as the algorithm. The 7B model was trained for 2 epochs on 4 nodes (8 Hopper GPUs each) and the 32B model on 16 nodes for 2 epochs.
           </p>
-          <h3 class="title is-4 has-text-centered">4.2 Results</h3>
+          <!-- <h3 class="title is-4 has-text-centered">4.2 Results</h3> -->
           <div class="has-text-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
-            <h4 class="title is-5">Main Experiment Results (Table 3)</h4>
+            <!-- <h4 class="title is-5">Main </h4> -->
             <div class="table-container" style="overflow-x: auto;">
               <table id="results-table" class="table is-bordered is-narrow is-hoverable is-fullwidth is-size-7">
                 <colgroup>
@@ -468,11 +473,11 @@
                     <th colspan="3">32B</th>
                   </tr>
                   <tr>
-                    <th>GURU 7B</th>
+                    <th>Guru 7B</th>
                     <th>General Reasoner 7B</th>
                     <th>ORZ 7B</th>
                     <th>SimpleRL 7B</th>
-                    <th>GURU 32B</th>
+                    <th>Guru 32B</th>
                     <th>ORZ 32B</th>
                     <th>SimpleRL 32B</th>
                   </tr>
@@ -557,67 +562,46 @@
                 </tbody>
               </table>
             </div>
-            <p class="is-italic" style="margin-top: 0.5rem;">Full 17 benchmark performance on 7B and 32B Models. GURU shows significant improvements over baselines on general reasoning skills.</p>
+            <!-- <p class="is-italic" style="margin-top: 0.5rem;">Full 17 benchmark performance on 7B and 32B Models. Guru shows significant improvements over baselines on general reasoning skills.</p> -->
           </div>
-          <p>
-            As shown in Table 3, GURU-7B and GURU-32B consistently demonstrate more balanced and advanced performance. GURU-7B achieved an average score of 41.17%, outperforming Open-Reasoner-Zero-7B by 7.3%. GURU-32B attained 52.68%, surpassing Open-Reasoner-Zero-32B by over 7.8%. These results highlight the GURU dataset's effectiveness in promoting a wide scope of reasoning ability.
-          </p>
+          <!-- <p>
+            As shown in Table 3, Guru-7B and Guru-32B consistently demonstrate more balanced and advanced performance. Guru-7B achieved an average score of 41.17%, outperforming Open-Reasoner-Zero-7B by 7.3%. Guru-32B attained 52.68%, surpassing Open-Reasoner-Zero-32B by over 7.8%. These results highlight the Guru dataset's effectiveness in promoting a wide scope of reasoning ability.
+          </p> -->
 
-          <h3 class="title is-4 has-text-centered">4.3 Analysis of Pass@k Curves</h3>
+          <h3 class="title is-4 has-text-centered" style="margin-top: 5rem;">Pass@k Curves</h3>
           <div class="has-text-centered" style="margin-top: 1rem; margin-bottom: 1rem;">
-            <h4 class="title is-5">Main Experiment Results</h4>
+            <!-- <h4 class="title is-5">Main Experiment Results</h4> -->
             <div class="columns is-centered">
               <div class="column is-one-third">
                 <img src="./static/images/pass_k_comparison.svg" alt="Pass@k Comparison" style="width: 100%; height: auto;">
-                <p class="is-italic" style="margin-top: 0.5rem;">Pass@k analysis across different models.</p>
+                <!-- <p class="is-italic" style="margin-top: 0.5rem;">Pass@k analysis across different models.</p> -->
               </div>
               <div class="column is-two-thirds">
                 <img src="./static/images/temp_top_comparison.svg" alt="Top Model Comparison" style="width: 100%; height: auto;">
-                <p class="is-italic" style="margin-top: 0.5rem;">Performance comparison across models.</p>
+                <!-- <p class="is-italic" style="margin-top: 0.5rem;">Performance comparison across models.</p> -->
               </div>
             </div>
           </div>
           <p>
-            As shown in Table 3, GURU-7B and GURU-32B consistently demonstrate more balanced and advanced performance. GURU-7B achieved an average score of 41.17%, outperforming Open-Reasoner-Zero-7B by 7.3%. GURU-32B attained 52.68%, surpassing Open-Reasoner-Zero-32B by over 7.8%. These results highlight the GURU dataset's effectiveness in promoting a wide scope of reasoning ability.
-          </p>
+            Pass@k behavior is highly task-dependent: while improvements in math tasks (e.g., AIME) might largely leverage base model capabilities, tasks like Zebra Puzzle demonstrate genuine reasoning expansion. Model scale also matters—larger models (32B) show more consistent gains than smaller ones (7B). Additionally, decoding hyperparameters significantly affect Pass@k, with higher temperature and top-p enhancing exploration and performance at larger k. These insights suggest Pass@k reflects both model and sampling dynamics, and should be interpreted cautiously.          </p>
 
         </div>
       </div>
     </div>
-    <div class="columns is-centered" style="margin-top: 2rem;">
-      <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">5. Related Work</h2>
-        <div class="content has-text-justified">
-          <p>
-            Reinforcement Learning from Verifiable Rewards (RLVR) has emerged as a powerful paradigm for LLM reasoning. Much open work has focused on specializing models for single domains like Math (Open-Reasoner-Zero, Skywork-OR1, DeepScaler, SimpleRL) or Code (DeepCoder). While powerful in specific areas, this limits generalizability. Co-current works like General-Reasoner and Nemotron-CrossThinker explore broader domains but often remain confined to STEM problems. GURU addresses this gap with a novel multi-domain dataset spanning six reasoning domains. Our GURU-7B/32B models, trained exclusively on this open data, achieve state-of-the-art general reasoning results among similar open models.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="columns is-centered" style="margin-top: 2rem;">
-      <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">6. Conclusion</h2>
-        <div class="content has-text-justified">
-          <p>
-            This work introduces GURU, a curated dataset for RL on general domains (Math, Code, Science, Logic, Simulation, Tabular analysis). Controlled experiments show that domain and task difficulty affect transferability, and mixed-domain training matches or exceeds single-domain performance. We developed GURU-7B and GURU-32B models using RL on GURU, demonstrating state-of-the-art performance among open models on an extensive evaluation suite. These models show a notable leap in general reasoning, highlighting a gap left by prior efforts. The GURU dataset, models, evaluation suite, and code will be made available to support community efforts.
-          </p>
-        </div>
-      </div>
-    </div>
-    </div>
+ 
 </section>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{liu2025guru-TODO,
-  author    = {Liu, Tianyang and OpenAl 03 and Claude Sonnet 43},
-  title     = {GURU: Towards General Reasoning via Cross-Domain Reinforcement Learning},
-  journal   = {arXiv preprint - TODO},
-  year      = {2025},
-  month     = {June},
-  note      = {Details based on provided PDF. Full BibTeX entry - TODO}
-}</code></pre>
+    <pre><code>@misc{cheng2025revisiting,
+      title         = {Revisiting Reinforcement Learning for LLM Reasoning from A Cross-Domain Perspective},
+      author        = {Zhoujun Cheng and Shibo Hao and Tianyang Liu and Fan Zhou and Yutao Xie and Feng Yao and Yuexin Bian and Yonghao Zhuang and Nilabjo Dey and Yuheng Zha and Yi Gu and Kun Zhou and Yuqi Wang and Yuan Li and Richard Fan and Jianshu She and Chengqian Gao and Abulhair Saparov and Haonan Li and Taylor W. Killian and Mikhail Yurochkin and Zhengzhong Liu and Eric P. Xing and Zhiting Hu},
+      journal       = {arXiv preprint arXiv:2506.14965},
+      year          = {2025},
+      doi           = {10.48550/arXiv.2506.14965},
+      url           = {https://arxiv.org/abs/2506.14965}
+    }</code></pre>
   </div>
 </section>
 
@@ -627,7 +611,7 @@
       <a class="icon-link"
          href="./Guru_Arxiv.pdf"> <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="#GURU-code-github-TODO" class="external-link">
+      <a class="icon-link" href="#Guru-code-github-TODO" class="external-link">
         <i class="fab fa-github"></i>
       </a>
     </div>
